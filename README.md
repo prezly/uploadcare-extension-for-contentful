@@ -2,6 +2,10 @@
 
 Use Uploadcare images for Contentful image fields
 
+<img src="./docs/image-field-uploading-demo.gif" alt="Content field uploading image demo">
+
+Brought to you with ❤️ by [Prezly](https://www.prezly.com/).
+
 ## Installation
 
 1. Make sure you have an [Uploadcare](https://uploadcare.com/) subscription.
@@ -46,6 +50,8 @@ Use Uploadcare images for Contentful image fields
 
 8. Enjoy!
 
-## Credits
+<img src="./docs/full-installation-process-demo.gif" alt="Full installation process">
 
-Brought to you with ❤️ by [Prezly](https://www.prezly.com/). 
+## Share the awesomeness
+
+If you like this library, please share a link to this page on Twitter. :) 

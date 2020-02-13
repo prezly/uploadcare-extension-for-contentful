@@ -13,7 +13,7 @@ Use Uploadcare images for Contentful image fields
    - Click *Add extension* > *Install from GitHub*
    - Paste the link below:
      ```
-     https://github.com/prezly/uploadcare-extension-for-contentful/blob/master/uploadcare-image-dialog/extension.json`
+     https://github.com/prezly/uploadcare-extension-for-contentful/blob/master/uploadcare-image-dialog/extension.json
      ```
    - Click *Install*
    - When you the extension page, scroll down and provide *Uploadcare Public Key*
@@ -24,7 +24,7 @@ Use Uploadcare images for Contentful image fields
    - Click *Add extension* > *Install from GitHub*
    - Paste the link below:
     ```
-    https://github.com/prezly/uploadcare-extension-for-contentful/blob/master/uploadcare-image-field/extension.json`
+    https://github.com/prezly/uploadcare-extension-for-contentful/blob/master/uploadcare-image-field/extension.json
     ```
    - Click *Install*
    - When you the extension page, scroll down and provide *Dialog Extension ID*.

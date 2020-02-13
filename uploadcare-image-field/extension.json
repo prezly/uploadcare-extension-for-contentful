@@ -2,6 +2,7 @@
     "name": "Uploadcare Image Field",
     "id": "uploadcare-image-field",
     "srcdoc": "./extension.html",
+    "fieldTypes": ["Object"],
     "parameters": {
         "installation": [
             {

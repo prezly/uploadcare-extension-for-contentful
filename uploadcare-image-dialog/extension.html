@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<script src="https://unpkg.com/contentful-ui-extensions-sdk@3"></script>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+<script src="https://ucarecdn.com/libs/widget-tab-effects/1.x/uploadcare.tab-effects.min.js" charset="utf-8"></script>
+<style>
+    .uploadcare--dialog {
+        padding-top: 0 !important;
+    }
+    .uploadcare--dialog__container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .uploadcare--dialog__powered-by {
+        display: none !important;
+    }
+</style>
+
+<script>
+    uploadcare.registerTab('preview', uploadcareTabEffects);
+
+    window.contentfulExtension.init(function(api) {
+        const settings = {
+            publicKey: api.parameters.installation.publicKey,
+            imagesOnly: true,
+            previewStep: true,
+            effects: 'crop,rotate,mirror,flip,enhance,sharp,blur,grayscale',
+            debugUploads: true,
+            crop: 'free',
+        };
+
+        function getUploadcareFile(fileInfo) {
+            return new Promise((resolve, reject) => {
+                if (!fileInfo) {
+                    return resolve({ file: null });
+                }
+                const file = uploadcare.fileFrom('uploaded', fileInfo.cdnUrl, settings)
+                    .done(() => {
+                        // Need to wrap file into an object, as it's a promise-like object.
+                        // Otherwise await will automatically resolve it to the promised value.
+                        // Which is fileInfo (not file itself).
+                        resolve({ file });
+                    })
+                    .fail((error) => {
+                        console.log('Failed to construct an uploadcare file instance.');
+                        resolve({ file: null });
+                    });
+            });
+        }
+
+        async function openDialog(fileInfo) {
+            const { file } = await getUploadcareFile(fileInfo);
+            const dialog = uploadcare.openDialog(file, settings);
+            dialog.done(function(uploadcareFile) {
+                uploadcareFile.done(fileInfo => api.close(fileInfo));
+            });
+            dialog.fail(function () {
+                api.close(fileInfo);
+            });
+        }
+
+        openDialog((api.parameters.invocation || {}).file);
+
+        api.window.updateHeight(500);
+    });
+</script>

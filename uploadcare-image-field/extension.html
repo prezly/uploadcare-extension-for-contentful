@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<script src="https://unpkg.com/contentful-ui-extensions-sdk@3"></script>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    }
+
+    .button {
+        display: inline;
+        align-items: center;
+        box-sizing: border-box;
+        border: 0;
+        padding: 0;
+        font-size: .875rem;
+        background: none;
+        transition: color .1s ease-in-out;
+        appearance: none;
+        white-space: normal;
+        text-align: left;
+        color: #3c80cf;
+    }
+
+    .button > span {
+        text-decoration: underline;
+    }
+
+    .button.danger {
+        color: #d9453f;
+    }
+
+    .button:hover, .button:active, .button:focus {
+        color: #2a3039;
+        cursor: pointer;
+    }
+
+    .button i {
+        display: inline;
+        margin-right: 4px;
+        font-style: normal;
+        font-size: 140%;
+        line-height: .6em;
+        top: +2px;
+        position: relative;
+    }
+
+    #image {
+        display: block;
+        max-width: 700px;
+        max-height: 254px;
+        border: 1px solid #d3dce0;
+        margin-bottom: 12px;
+        cursor: pointer;
+    }
+
+    .empty #remove, .empty #image {
+        display: none;
+    }
+
+    .non-empty #upload {
+        display: none;
+    }
+</style>
+
+<div id="container" class="empty">
+    <img id="image" src="" title="Click to edit this image">
+
+    <button type="button" class="button" id="upload">
+        <i>+</i>
+        <span>Upload new image</span>
+    </button>
+
+    <button type="button" class="button danger" id="remove">
+        <span>Remove image</span>
+    </button>
+</div>
+
+<script>
+    window.contentfulExtension.init(function (api) {
+
+        api.window.updateHeight();
+
+        async function openDialog(file = null) {
+            return await api.dialogs.openExtension({
+                id: 'uploadcare-image-dialog',
+                width: 900,
+                shouldCloseOnEscapePress: true,
+                shouldCloseOnOverlayClick: true,
+                parameters: {
+                    file,
+                },
+            });
+        }
+
+        api.field.onValueChanged((file) => {
+            if (file) {
+                document.getElementById('image').src = `${file.cdnUrl}-/preview/`;
+            }
+            document.getElementById('container').classList.toggle('empty', !file);
+            document.getElementById('container').classList.toggle('non-empty', Boolean(file));
+
+            api.window.updateHeight();
+        });
+
+        document.getElementById('image').addEventListener('load', () => {
+            api.window.updateHeight();
+        });
+
+        document.getElementById('image').addEventListener('click', async function () {
+            const file = await openDialog(api.field.getValue());
+            api.field.setValue(file);
+        });
+
+        document.getElementById('upload').addEventListener('click', async function () {
+            const file = await openDialog();
+            api.field.setValue(file);
+        });
+
+        document.getElementById('remove').addEventListener('click', async function () {
+            api.field.setValue(null);
+        });
+    });
+</script>

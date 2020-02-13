@@ -1,0 +1,8 @@
+{
+    "name": "Uploadcare Image Field",
+    "id": "uploadcare-image-field",
+    "srcdoc": "./extension.html",
+    "parameters": {
+        "installation": []
+    }
+}

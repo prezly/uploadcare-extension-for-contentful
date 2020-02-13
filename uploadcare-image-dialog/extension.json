@@ -1,0 +1,15 @@
+{
+    "name": "Uploadcare Dialog",
+    "id": "uploadcare-dialog",
+    "srcdoc": "./extension.html",
+    "parameters": {
+        "installation": [
+            {
+                "id": "publicKey",
+                "type": "Symbol",
+                "name": "Uploadcare Public Key",
+                "required": true
+            }
+        ]
+    }
+}

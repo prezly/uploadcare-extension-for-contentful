@@ -1,2 +1,4 @@
-# uploadcare-extension-for-contentful
+# Uploadcare extension for Contentful CMS
+
 Use Uploadcare images for Contentful image fields
+

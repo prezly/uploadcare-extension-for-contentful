@@ -1,6 +1,6 @@
 {
-    "name": "Uploadcare Dialog",
-    "id": "uploadcare-dialog",
+    "name": "Uploadcare Image Dialog",
+    "id": "uploadcare-image-dialog",
     "srcdoc": "./extension.html",
     "parameters": {
         "installation": [

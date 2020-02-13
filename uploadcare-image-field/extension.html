@@ -81,7 +81,7 @@
 
         async function openDialog(file = null) {
             return await api.dialogs.openExtension({
-                id: 'uploadcare-image-dialog',
+                id: api.parameters.installation.dialogExtensionId,
                 width: 900,
                 shouldCloseOnEscapePress: true,
                 shouldCloseOnOverlayClick: true,

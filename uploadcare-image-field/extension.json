@@ -3,6 +3,13 @@
     "id": "uploadcare-image-field",
     "srcdoc": "./extension.html",
     "parameters": {
-        "installation": []
+        "installation": [
+            {
+                "id": "dialogExtensionId",
+                "type": "Symbol",
+                "name": "Uploadcare Image Dialog Extension ID",
+                "required": true
+            }
+        ]
     }
 }

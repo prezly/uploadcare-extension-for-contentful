@@ -6,6 +6,13 @@ Use Uploadcare images for Contentful image fields
 
 Brought to you with ❤️ by [Prezly](https://www.prezly.com/).
 
+
+## Requirements
+
+The extension code is written using modern JS features (async/await syntax) and does not have transpilation to simplify reviewing final code before installing it to Contentful. This means **this extension will only work in modern "evergreen" browsers** (Chromium 55+ and derivatives, Edge 15+, Firefox 52+, Opera 42+, Safari 10.1+).
+
+
+
 ## Installation
 
 1. Make sure you have an [Uploadcare](https://uploadcare.com/) subscription.

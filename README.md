@@ -4,7 +4,7 @@ Use Uploadcare images for Contentful image fields
 
 <img src="./docs/image-field-uploading-demo.gif" alt="Content field uploading image demo">
 
-Brought to you with ❤️ by [Prezly](https://www.prezly.com/).
+Brought to you with ❤️ by [Prezly](https://www.prezly.com/?utm_source=github&utm_campaign=uploadcare-extension-for-contentful).
 
 
 ## Requirements
